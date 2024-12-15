@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ZXBASIC="$HOME/opt/zxbasic"
+PROJECT="$HOME/src/github.com/vascocosta/glulander"
+PROGRAM="glulander"
+EMULATOR="fuse-gtk"
+
+cur_dir=`pwd`
+cd $ZXBASIC
+./zxbc.py -taB $PROJECT/$PROGRAM.bas -o $PROJECT/$PROGRAM.tap
+cd $cur_dir
+$EMULATOR $PROGRAM.tap
