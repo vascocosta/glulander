@@ -111,9 +111,6 @@ sub main_loop()
         end if
         render_level()
         update()
-        if level = MAX_LEVEL
-            render_flag()
-        end if
         do loop while inkey$ <> "n"
     loop while level <= MAX_LEVEL and lives > 0
 
@@ -271,6 +268,10 @@ end sub
 sub land()
     print at 1, 2; ink 4; "LANDED! PRESS N TO CONTINUE.";
     border 4
+
+    if level = MAX_LEVEL
+        render_flag()
+    end if
 
     beep 0.15, 5
     beep 0.15, 10
