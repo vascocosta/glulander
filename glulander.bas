@@ -287,7 +287,7 @@ sub game_over()
     border 0
     paper 0
     cls
-    if level = 11 then
+    if level = MAX_LEVEL then
         print at 8, 10; ink 0; paper 4; "  YOU WON!  ";
     else
         print at 8, 10; ink 7; paper 2; " GAME OVER! ";
