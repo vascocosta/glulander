@@ -100,6 +100,8 @@ sub welcome_screen()
     print "Try to land on the green pads,"
     print "by keeping the vertical speed"
     print "denoted by VY below 5.8 m/s."
+    print "Horizontal/vertical controls"
+    print "do not work at the same time!"
     print at 19, 6; ink 7; "  PRESS "; ink 4; "S"; ink 7; " TO START  ";
 end sub
 
@@ -287,7 +289,7 @@ sub game_over()
     border 0
     paper 0
     cls
-    if level = MAX_LEVEL then
+    if level = MAX_LEVEL + 1 and crashed = 0 then
         print at 8, 10; ink 0; paper 4; "  YOU WON!  ";
     else
         print at 8, 10; ink 7; paper 2; " GAME OVER! ";
