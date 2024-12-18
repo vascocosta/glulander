@@ -6,6 +6,8 @@ The lander is called Lua and is made of, well, wood. What else? The vertical thr
 
 Try to land on the green pads, by keeping the vertical speed denoted by VY below 5.8 m/s. Horizontal/vertical controls do not work at the same time!
 
+You can download a free tape file of the game [here](https://gluon81.itch.io/glulander).
+
 ## Screenshots
 
 ![glulander_01](screenshots/glulander_01.png)
