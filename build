@@ -7,6 +7,6 @@ EMULATOR="fuse-gtk"
 
 cur_dir=`pwd`
 cd $ZXBASIC
-./zxbc.py -taB $PROJECT/$PROGRAM.bas -o $PROJECT/$PROGRAM.tap
+./zxbc.py -taB $PROJECT/src/$PROGRAM.bas -o $PROJECT/$PROGRAM.tap
 cd $cur_dir
 $EMULATOR $PROGRAM.tap
