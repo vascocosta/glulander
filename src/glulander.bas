@@ -3,6 +3,7 @@
 
 dim MAX_LEVEL as ubyte = 12
 dim MAX_SCORE as uinteger = 600
+dim MAX_FUEL as ubyte = 50
 
 dim x as ubyte
 dim y as ubyte
@@ -125,7 +126,7 @@ sub init_vars()
     let vy = 0
     let gravity = 0.08
     let thrust = -0.2
-    let fuel = 50
+    let fuel = MAX_FUEL
     let lc$ = chr$(144)
     let lcc$ = chr$(145)
 end sub
@@ -241,16 +242,45 @@ sub update()
 end sub
 
 sub show_stats()
-    print at 22, 0; ink 5; bright 1; "FUEL (L): "; ink 3; right("00" + str$(fuel), 2);
-    print at 23, 0; ink 5; bright 1; "VY (M/S):            ";
-    print at 23, 0; ink 5; bright 1; "VY (M/S): "; ink 3; vy * 5;
-    rem print at 22, 21; ink 5; bright 1; "LIVES: "; ink 7; right("0000" + str$(lives), 4);
+    show_fuel(fuel)
+    show_speed(vy * 5)
     print at 22, 21; ink 5; bright 1; "LIVES: ";
     ink 7
     for l = 1 to lives
-        print at 22, 27 + l; lc$;
+        print at 22, 27 + l; bright 1; lc$;
     next l 
     print at 23, 21; ink 5; bright 1; "SCORE: "; ink 7; right("0000" + str$(score), 4);
+end sub
+
+sub show_fuel(fuel as ubyte)
+    print at 22, 0; ink 5; bright 1; "FUEL (L): ";
+    if fuel >= MAX_FUEL - (MAX_FUEL / 3) then
+        print at 22, 10; ink 4; paper 4; bright 0; "   ";
+        print at 22, 14; ink 3; paper 0; bright 1; right("00" + str$(fuel), 2);
+    else if fuel >= MAX_FUEL - (2 * (MAX_FUEL / 3)) and fuel < MAX_FUEL - (MAX_FUEL / 3) then
+        print at 22, 10; ink 0; paper 0; bright 0; "   ";
+        print at 22, 10; ink 4; paper 4; bright 0; "  ";
+        print at 22, 14; ink 3; paper 0; bright 1; right("00" + str$(fuel), 2);
+    else if fuel > 0 then
+        print at 22, 10; ink 0; paper 0; bright 0; "   ";
+        print at 22, 10; ink 4; paper 4; bright 0; " ";
+        print at 22, 14; ink 3; paper 0; bright 1; right("00" + str$(fuel), 2);
+    else
+        print at 22, 10; ink 0; paper 0; bright 0; " ";
+        print at 22, 14; ink 3; paper 0; bright 1; right("00" + str$(fuel), 2);
+    end if
+end sub
+
+sub show_speed(true_speed as float)
+    if abs(true_speed) > 0 and abs(true_speed) < 5 then
+        print at 23, 0; ink 5; bright 1; "VY (M/S): "; ink 4; paper 4; " "; ink 0; paper 0; "  "; ink 3; paper 0; " "; left(str$(true_speed) + "     ", 5);
+    else if abs(true_speed) >= 5 and abs(true_speed) < 5.8 then
+        print at 23, 0; ink 5; bright 1; "VY (M/S): "; ink 4; paper 4; " "; ink 6; paper 6; " "; ink 0; paper 0; " "; ink 3; paper 0; " "; left(str$(true_speed)  + "     ", 5);
+    else if abs(true_speed) >= 5.8 then
+        print at 23, 0; ink 5; bright 1; "VY (M/S): "; ink 4; paper 4; " "; ink 6; paper 6; " "; ink 2; paper 2; " "; ink 3; paper 0; " "; left(str$(true_speed)  + "     ", 5);
+    else
+        print at 23, 0; ink 5; bright 1; "VY (M/S): "; ink 4; paper 4; "-";
+    end if
 end sub
 
 sub crash()
