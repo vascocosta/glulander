@@ -356,7 +356,7 @@ sub game_over()
     print at 14, 10; ink 7; "BONUS:  "; right("0000" + str$(bonus), 4);
     print at 16, 10; ink 1; paper 7; "SCORE:  "; right("0000" + str$(score + bonus), 4);
     
-    if level = 11 then
+    if level = MAX_LEVEL + 1 then
         beep 0.3, 5
         beep 0.3, 7
         beep 0.3, 9
