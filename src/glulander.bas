@@ -3,7 +3,7 @@
 
 dim MAX_LEVEL as ubyte = 14
 dim MAX_LIVES as ubyte = 4
-dim MAX_SCORE as uinteger = 600
+dim MAX_SCORE as uinteger = 700
 dim MAX_FUEL as ubyte = 50
 
 dim x as ubyte
@@ -341,11 +341,11 @@ sub game_over()
     bright 1
 
     if score = MAX_SCORE then
-        if total_fuel <= 250 then
+        if total_fuel <= 400 then
             let bonus = MAX_SCORE
-        else if total_fuel > 250 and total_fuel <= 260 then
+        else if total_fuel > 400 and total_fuel <= 450 then
             let bonus = MAX_SCORE / 2
-        else if total_fuel > 260 and total_fuel <= 270 then
+        else if total_fuel > 450 and total_fuel <= 500 then
             bonus = MAX_SCORE / 4
         end if
     end if
