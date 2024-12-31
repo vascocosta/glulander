@@ -58,7 +58,7 @@ sub welcome_screen()
     next i
 
     print at 2, 6; ink 7; "                    ";
-    print at 3, 6; ink 4; "  GLULANDER V1.0.0  ";
+    print at 3, 6; ink 4; "  GLULANDER V1.1.0  ";
     print at 4, 6; ink 7; "                    ";
     print at 5, 6; ink 7; "                    ";
     print at 6, 6; ink 5; " "; chr$(127); " 2024 VASCO COSTA ";
